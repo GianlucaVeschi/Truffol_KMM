@@ -49,28 +49,28 @@ kotlin {
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
         frameworkName = "shared"
-        podfile = project.file("../iosFood2Fork/Podfile")
+        podfile = project.file("../iosFood2Fork/Podfile") //FixMe
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies{
-                implementation(Ktor.core)
-                implementation(Ktor.clientSerialization)
-                implementation(Kotlinx.datetime)
-                implementation(SQLDelight.runtime)
+                //implementation(Ktor.core)
+                //implementation(Ktor.clientSerialization)
+                //implementation(Kotlinx.datetime)
+                //implementation(SQLDelight.runtime)
             }
         }
         val androidMain by getting {
             dependencies{
-                implementation(Ktor.android)
-                implementation(SQLDelight.androidDriver)
+                //implementation(Ktor.android)
+                //implementation(SQLDelight.androidDriver)
             }
         }
         val iosMain by getting{
             dependencies {
-                implementation(Ktor.ios)
-                implementation(SQLDelight.nativeDriver)
+                //implementation(Ktor.ios)
+                //implementation(SQLDelight.nativeDriver)
             }
         }
     }
