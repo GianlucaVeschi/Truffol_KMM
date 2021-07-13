@@ -23,6 +23,6 @@ class TruffleServiceImpl(
     }
 
     companion object {
-        const val TARTUFO_BASE_URL = "https://my-tartufo-api.herokuapp.com"
+        const val BASE_URL = "https://my-tartufo-api.herokuapp.com"
     }
 }
