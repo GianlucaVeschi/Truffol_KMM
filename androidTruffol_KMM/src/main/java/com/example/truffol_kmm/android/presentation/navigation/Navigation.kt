@@ -14,7 +14,9 @@ import com.example.truffol_kmm.android.presentation.trufflelist.TruffleListViewM
 
 @Composable
 fun Navigation() {
+
     val navController = rememberNavController()
+
     NavHost(navController = navController, startDestination = Screen.TruffleList.route) {
 
         composable(route = Screen.TruffleList.route) { navBackStackEntry ->
@@ -38,7 +40,7 @@ fun Navigation() {
             val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
             val truffleDetailViewModel: TruffleDetailViewModel = viewModel("TruffleDetailViewModel", factory)
             TruffleDetailScreen(
-                truffleId = truffleDetailViewModel.truffleId.value
+                truffle = truffleDetailViewModel.truffle.value
             )
         }
     }

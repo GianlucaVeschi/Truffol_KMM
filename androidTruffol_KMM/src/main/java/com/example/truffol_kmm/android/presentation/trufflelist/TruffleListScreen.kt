@@ -15,7 +15,7 @@ fun TruffleListScreen(
     onSelectTruffle: (Int) -> Unit,
 ) {
     LazyColumn {
-        items(100){ truffleId ->
+        items(10){ truffleId ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
