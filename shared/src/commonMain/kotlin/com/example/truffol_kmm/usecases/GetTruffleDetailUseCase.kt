@@ -2,6 +2,7 @@ package com.example.truffol_kmm.usecases
 
 import com.example.truffol_kmm.datasource.network.TruffleService
 import com.example.truffol_kmm.domain.model.Truffle
+import com.example.truffol_kmm.domain.util.DataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -12,12 +13,12 @@ class GetTruffleDetailUseCase(
 ) {
     fun run(
         truffleId: Int
-    ): Flow<Truffle> = flow {
+    ): Flow<DataState<Truffle>> = flow {
         try {
             val truffle = truffleService.getTruffleDetail(truffleId)
-            emit(truffle)
+            emit(DataState.data(data = truffle))
         } catch (e: Exception) {
-            // how can we emit an error?
+            emit(DataState.error<Truffle>(message = e.message?: "Unknown Error"))
         }
     }
 }

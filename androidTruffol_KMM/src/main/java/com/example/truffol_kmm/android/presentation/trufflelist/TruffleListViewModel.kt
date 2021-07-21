@@ -21,7 +21,7 @@ class TruffleListViewModel @Inject constructor(
 
     private fun loadTruffles(){
         getTruffleListUseCase.run().onEach { dataState ->
-            println("TruffleListVM: ${dataState.isLoading}")
+            println("TruffleListVM is loading: ${dataState.isLoading}")
 
             dataState.data?.let { truffles ->
                 println("TruffleListVM: truffles: ${truffles}")
