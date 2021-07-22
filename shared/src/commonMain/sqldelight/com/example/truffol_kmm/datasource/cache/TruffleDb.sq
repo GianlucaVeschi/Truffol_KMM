@@ -1,0 +1,43 @@
+CREATE TABLE  truffle_Entity(
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    truffleName TEXT NOT NULL,
+    description TEXT NOT NULL,
+    image_url TEXT NOT NULL,
+    rating INTEGER NOT NULL,
+    price INTEGER NOT NULL
+    -- date_added REAL NOT NULL, -- ADD ME
+    -- date_updated REAL NOT NULL -- ADD ME
+);
+
+selectAll:
+SELECT *
+FROM truffle_Entity;
+
+insertTruffle:
+INSERT OR REPLACE
+INTO truffle_Entity (
+    id,
+    truffleName,
+    description,
+    image_url,
+    rating,
+    price
+) VALUES (?, ?, ?, ?, ?,?);
+
+searchTruffles:
+SELECT * FROM truffle_Entity
+WHERE truffleName LIKE ('%' || :query || '%')
+OR description LIKE ('%' || :query || '%')
+-- ORDER BY date_updated DESC -- Ordering can cause duplicates in the results because they all have identical timestamps
+LIMIT :pageSize
+OFFSET :offset;
+
+getAllTruffles:
+SELECT * FROM truffle_Entity
+-- ORDER BY date_updated DESC -- Ordering can cause duplicates in the results because they all have identical timestamps
+LIMIT :pageSize
+OFFSET :offset;
+
+getTruffleById:
+SELECT * FROM truffle_Entity
+WHERE id = :id;

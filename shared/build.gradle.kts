@@ -6,7 +6,7 @@ plugins {
     kotlin(KotlinPlugins.cocoapods)
     kotlin(KotlinPlugins.serialization) version Kotlin.version
     id(Plugins.androidLibrary)
-    //id(Plugins.sqlDelight) //Fixme
+    id(Plugins.sqlDelight)
 }
 
 version = "1.0"
@@ -49,7 +49,7 @@ kotlin {
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
         frameworkName = "shared"
-        podfile = project.file("../iosFood2Fork/Podfile") //FixMe
+        podfile = project.file("../iosTruffol_KMM/Podfile") //FixMe
     }
 
     sourceSets {
@@ -58,27 +58,27 @@ kotlin {
                 implementation(Kotlinx.datetime)
                 implementation(Ktor.core)
                 implementation(Ktor.clientSerialization)
-                //implementation(SQLDelight.runtime)
+                implementation(SQLDelight.runtime)
             }
         }
         val androidMain by getting {
             dependencies{
                 implementation(Ktor.android)
-                //implementation(SQLDelight.androidDriver)
+                implementation(SQLDelight.androidDriver)
             }
         }
         val iosMain by getting{
             dependencies {
                 implementation(Ktor.ios)
-                //implementation(SQLDelight.nativeDriver)
+                implementation(SQLDelight.nativeDriver)
             }
         }
     }
 }
 
-//sqldelight {
-//    database("TruffleDatabase") {
-//        packageName = "com.example.truffol_kmm.datasource.cache"
-//        sourceFolders = listOf("sqldelight")
-//    }
-//}
+sqldelight {
+    database("TruffleDatabase") { //Could be anything
+        packageName = "com.example.truffol_kmm.datasource.cache"
+        sourceFolders = listOf("sqldelight")
+    }
+}
