@@ -6,7 +6,7 @@ plugins {
     kotlin(KotlinPlugins.cocoapods)
     kotlin(KotlinPlugins.serialization) version Kotlin.version
     id(Plugins.androidLibrary)
-    //id(Plugins.sqlDelight) //Fixme
+    id(Plugins.sqlDelight)
 }
 
 version = "1.0"
@@ -58,19 +58,19 @@ kotlin {
                 implementation(Kotlinx.datetime)
                 implementation(Ktor.core)
                 implementation(Ktor.clientSerialization)
-                //implementation(SQLDelight.runtime)
+                implementation(SQLDelight.runtime)
             }
         }
         val androidMain by getting {
             dependencies{
                 implementation(Ktor.android)
-                //implementation(SQLDelight.androidDriver)
+                implementation(SQLDelight.androidDriver)
             }
         }
         val iosMain by getting{
             dependencies {
                 implementation(Ktor.ios)
-                //implementation(SQLDelight.nativeDriver)
+                implementation(SQLDelight.nativeDriver)
             }
         }
     }
