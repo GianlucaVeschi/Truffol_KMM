@@ -49,7 +49,7 @@ kotlin {
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
         frameworkName = "shared"
-        podfile = project.file("../iosFood2Fork/Podfile") //FixMe
+        podfile = project.file("../iosTruffol_KMM/Podfile") //FixMe
     }
 
     sourceSets {
@@ -76,9 +76,9 @@ kotlin {
     }
 }
 
-//sqldelight {
-//    database("TruffleDatabase") {
-//        packageName = "com.example.truffol_kmm.datasource.cache"
-//        sourceFolders = listOf("sqldelight")
-//    }
-//}
+sqldelight {
+    database("TruffleDatabase") { //Could be anything
+        packageName = "com.example.truffol_kmm.datasource.cache"
+        sourceFolders = listOf("sqldelight")
+    }
+}
