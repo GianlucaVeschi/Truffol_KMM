@@ -27,16 +27,16 @@ INTO truffle_Entity (
 searchTruffles:
 SELECT * FROM truffle_Entity
 WHERE truffleName LIKE ('%' || :query || '%')
-OR description LIKE ('%' || :query || '%')
+OR description LIKE ('%' || :query || '%');
 -- ORDER BY date_updated DESC -- Ordering can cause duplicates in the results because they all have identical timestamps
-LIMIT :pageSize
-OFFSET :offset;
+-- LIMIT :pageSize
+-- OFFSET :offset;
 
 getAllTruffles:
-SELECT * FROM truffle_Entity
+SELECT * FROM truffle_Entity;
 -- ORDER BY date_updated DESC -- Ordering can cause duplicates in the results because they all have identical timestamps
-LIMIT :pageSize
-OFFSET :offset;
+-- LIMIT :pageSize;
+-- OFFSET :offset;
 
 getTruffleById:
 SELECT * FROM truffle_Entity
