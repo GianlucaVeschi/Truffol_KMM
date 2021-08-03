@@ -4,10 +4,6 @@ import com.example.truffol_kmm.datasource.network.model.TruffleApiModel
 import com.example.truffol_kmm.domain.model.Truffle
 import io.ktor.client.*
 
-expect class KtorClientFactory() {
-    fun build(): HttpClient
-}
-
 fun TruffleApiModel.toTruffle(): Truffle {
     return Truffle(
         id = this.id,
@@ -21,4 +17,8 @@ fun TruffleApiModel.toTruffle(): Truffle {
 
 fun List<TruffleApiModel>.toTruffleList(): List<Truffle> {
     return map { it.toTruffle() }
+}
+
+expect class KtorClientFactory() {
+    fun build(): HttpClient
 }

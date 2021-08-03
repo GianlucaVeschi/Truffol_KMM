@@ -4,6 +4,7 @@ import io.ktor.client.*
 import io.ktor.client.engine.ios.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
+import kotlinx.serialization.json.Json
 
 actual class KtorClientFactory actual constructor() {
     actual fun build(): HttpClient {
@@ -18,4 +19,3 @@ actual class KtorClientFactory actual constructor() {
         }
     }
 }
-

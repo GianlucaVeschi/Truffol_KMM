@@ -1,5 +1,6 @@
 package com.example.truffol_kmm.usecases
 
+import com.example.truffol_kmm.datasource.cache.TruffleCache
 import com.example.truffol_kmm.datasource.network.TruffleService
 import com.example.truffol_kmm.domain.model.Truffle
 import com.example.truffol_kmm.domain.util.DataState
@@ -9,13 +10,23 @@ import kotlinx.coroutines.flow.flow
 //Copy from https://github.com/GianlucaVeschi/Truffol/blob/master/app/src/main/java/com/example/truffol/interactors/truffle/SearchTrufflesUseCase.kt
 
 class GetTruffleListUseCase(
-    private val truffleService: TruffleService
+    private val truffleService: TruffleService,
+    private val truffleCache: TruffleCache
 ) {
     fun run(): Flow<DataState<List<Truffle>>> = flow {
         emit(DataState.loading())
         try {
             val truffles = truffleService.getTruffleList()
-            emit(DataState.data(data = truffles))
+
+            // insert into cache
+            truffleCache.insert(truffles)
+
+            // query the cache
+            val cacheResult = truffleCache.getAll()
+
+            // emit List<Recipe> from cache
+            emit(DataState.data<List<Truffle>>(message = null, data = cacheResult))
+
         } catch (e: Exception) {
            emit(DataState.error<List<Truffle>>(message = e.message?: "Unknown Error"))
         }
